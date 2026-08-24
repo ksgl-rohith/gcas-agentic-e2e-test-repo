@@ -1,3 +1,4 @@
+using GcasE2ETestApi;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

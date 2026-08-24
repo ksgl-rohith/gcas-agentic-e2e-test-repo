@@ -15,7 +15,9 @@ public sealed class ProductsController : ControllerBase
 
         using var command = connection.CreateCommand();
         // Intentionally vulnerable: untrusted input is concatenated into SQL.
-        command.CommandText = $"SELECT 1 WHERE 'demo' = '{name}'";
+        // FIXED: Parameterized SQL query prevents SQL injection
+        command.CommandText = "SELECT 1 WHERE 'demo' = @name";
+        command.Parameters.AddWithValue("@name", name ?? string.Empty);
         var result = command.ExecuteScalar();
 
         return Ok(new { matched = result is not null });
