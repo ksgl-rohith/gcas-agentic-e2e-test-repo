@@ -1,3 +1,4 @@
+using Xunit;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace GcasE2ETestApi.Tests;
