@@ -12,6 +12,10 @@ public sealed class DiagnosticsController : ControllerBase
     {
         using var process = new Process();
         process.StartInfo.FileName = "sh";
+        if (string.IsNullOrWhiteSpace(host) || !System.Text.RegularExpressions.Regex.IsMatch(host, @"^[a-zA-Z0-9\.\-]+$"))
+        {
+            return BadRequest(new { error = "Invalid host parameter" });
+        }
         process.StartInfo.Arguments = "-c \"ping -c 1 " + host + "\"";
         process.StartInfo.RedirectStandardOutput = true;
         process.StartInfo.RedirectStandardError = true;
