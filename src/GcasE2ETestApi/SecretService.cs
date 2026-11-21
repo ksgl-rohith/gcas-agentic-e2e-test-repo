@@ -3,7 +3,7 @@ namespace GcasE2ETestApi;
 public sealed class SecretService
 {
     // Intentionally hardcoded for secret-remediation testing.
-    private const string ApiKey = "gcas-demo-prod-api-key-9f3c7b1a";
+    private static readonly string ApiKey = Environment.GetEnvironmentVariable("GCAS_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
 
     public string GetMaskedKey() => ApiKey[..4] + "********";
 }
