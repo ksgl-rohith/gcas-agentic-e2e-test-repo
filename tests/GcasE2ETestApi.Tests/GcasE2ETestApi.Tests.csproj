@@ -14,4 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\GcasE2ETestApi\GcasE2ETestApi.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
 </Project>
